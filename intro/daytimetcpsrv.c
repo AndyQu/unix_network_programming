@@ -24,7 +24,8 @@ main(int argc, char **argv)
 
     for ( ; ; ) {
         connfd = Accept(listenfd, (SA *) &clientAddr, &clientAddrLength);
-	printf("received a connection:%s\n",inet_ntoa(clientAddr.sin_addr));
+	//printf("received a connection:%s:%d\n",inet_ntoa(clientAddr.sin_addr),ntohl(clientAddr.sin_port));
+	printf("received a connection:%s:%d\n",inet_ntoa(clientAddr.sin_addr),ntohs(clientAddr.sin_port));
 
         ticks = time(NULL);
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
